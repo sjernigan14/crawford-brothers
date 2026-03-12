@@ -502,12 +502,12 @@ footer {
   height: 40px;
   width: auto;
   margin-bottom: 20px;
-  opacity: 0.4;
+  opacity: 0.65;
 }
 footer p {
   font-size: 13px;
-  color: var(--text-light);
-  opacity: 0.5;
+  color: var(--text);
+  opacity: 0.85;
   letter-spacing: 0.5px;
   margin-bottom: 6px;
 }

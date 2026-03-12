@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dinner Menu | Crawford Brothers Steakhouse — Cary, NC</title>
-  <meta name="description" content="Explore the Crawford Brothers dinner menu — prime dry-aged steaks, fresh seafood tower, Siberian caviar, and bone marrow. Fenton, Cary NC.">
+  <meta name="description" content="Explore the Crawford Brothers dinner menu — prime dry-aged steaks, fresh seafood tower, Siberian caviar, craft cocktails, and curated wines. Fenton, Cary NC.">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
@@ -17,42 +17,230 @@
         "@type": "MenuSection",
         "name": "Raw & Chilled",
         "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Seafood Tower",
-            "description": "Oysters, shrimp, snow crab claws, tuna tartare, king crab salad"
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Siberian Caviar",
-            "description": "Served with traditional accompaniments"
-          }
+          { "@type": "MenuItem", "name": "Seafood Tower", "description": "Oysters, shrimp, snow crab claws, tuna tartare, lobster salad", "offers": { "@type": "Offer", "price": "150", "priceCurrency": "USD" } },
+          { "@type": "MenuItem", "name": "Siberian Caviar", "description": "Crème fraîche, chives, brioche toast", "offers": { "@type": "Offer", "price": "145", "priceCurrency": "USD" } }
         ]
       },
       {
         "@type": "MenuSection",
         "name": "Steaks & Chops",
         "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Prime New York Strip",
-            "description": "Dry-aged in-house"
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Dry-Aged Bone-In Ribeye",
-            "description": "Dry-aged in-house"
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Japanese A5 Strip Loin",
-            "description": "Japanese Wagyu"
-          }
+          { "@type": "MenuItem", "name": "Prime New York Strip 14 OZ", "offers": { "@type": "Offer", "price": "85", "priceCurrency": "USD" } },
+          { "@type": "MenuItem", "name": "Prime Ribeye 18 OZ", "offers": { "@type": "Offer", "price": "110", "priceCurrency": "USD" } },
+          { "@type": "MenuItem", "name": "Prime Dry Aged Bone In Ribeye 28 OZ", "offers": { "@type": "Offer", "price": "195", "priceCurrency": "USD" } },
+          { "@type": "MenuItem", "name": "Japanese A5 Striploin", "description": "Per ounce, 3 oz minimum", "offers": { "@type": "Offer", "price": "30", "priceCurrency": "USD" } }
         ]
       }
     ]
   }
   </script>
+  <style>
+    /* Menu-specific styles */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px 40px 0;
+    }
+    .menu-tab {
+      font-family: 'Tiller', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: transparent;
+      border: 1px solid var(--divider);
+      padding: 12px 40px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    .menu-tab:hover { border-color: var(--gold-dark); color: var(--gold); }
+    .menu-tab.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(196,153,92,0.08);
+    }
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-section-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 40px 20px;
+    }
+    .menu-section-title {
+      font-family: 'Tiller', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .menu-section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 14px auto 0;
+      opacity: 0.4;
+    }
+    .menu-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 48px;
+    }
+    .menu-items.single-col {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .menu-item {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(58,50,44,0.4);
+    }
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .menu-item-name {
+      font-family: 'Tiller', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    .menu-item-price {
+      font-family: 'Lexend Deca', sans-serif;
+      font-size: 15px;
+      color: var(--gold);
+      white-space: nowrap;
+      font-weight: 400;
+    }
+    .menu-item-desc {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    .menu-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--divider);
+      margin: 20px auto;
+    }
+
+    /* Steak sub-headers */
+    .menu-sub-header {
+      font-family: 'Tiller', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 30px 0 16px;
+      opacity: 0.7;
+    }
+
+    /* Sauces inline grid */
+    .sauce-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 32px;
+    }
+    .sauce-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+    .sauce-item span:first-child { color: var(--text); }
+    .sauce-item span:last-child { color: var(--gold); font-size: 13px; }
+
+    /* Wine list styles */
+    .wine-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(58,50,44,0.3);
+    }
+    .wine-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .wine-name {
+      font-family: 'Lexend Deca', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .wine-detail {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 2px;
+      font-weight: 300;
+    }
+    .wine-price {
+      font-size: 14px;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* Sister concepts footer */
+    .sister-concepts {
+      border-top: 1px solid var(--divider);
+      padding: 40px;
+      text-align: center;
+    }
+    .sister-concepts-label {
+      font-family: 'Tiller', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      opacity: 0.6;
+    }
+    .sister-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .sister-logos a {
+      display: block;
+      opacity: 0.45;
+      transition: opacity 0.3s;
+    }
+    .sister-logos a:hover { opacity: 0.8; }
+    .sister-logos img {
+      height: 45px;
+      width: auto;
+      filter: brightness(1.2) grayscale(20%);
+    }
+
+    @media (max-width: 768px) {
+      .menu-tabs { padding: 30px 20px 0; gap: 10px; }
+      .menu-tab { padding: 10px 24px; font-size: 14px; letter-spacing: 2px; }
+      .menu-section-wrap { padding: 40px 24px 16px; }
+      .menu-items { grid-template-columns: 1fr; gap: 0; }
+      .sauce-grid { grid-template-columns: 1fr; }
+      .sister-logos { gap: 24px; }
+      .sister-logos img { height: 35px; }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -76,57 +264,741 @@
     <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AGqaLiHvh9CDpYbIJEBNJ5M/Fish.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Dinner Menu">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Dinner Menu — Prime Steaks & Seafood</h1>
+      <h1>Dinner Menu</h1>
     </div>
   </section>
 
   <main>
-    <section class="card-grid">
-      <div class="card fade-in">
-        <h3>Raw & Chilled</h3>
-        <p>Seafood Tower, Siberian Caviar, Oysters, Shrimp Cocktail</p>
+    <!-- Tab Toggle -->
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab('food')">Food</button>
+      <button class="menu-tab" onclick="switchTab('drinks')">Drinks</button>
+    </div>
+
+    <!-- ==================== FOOD MENU ==================== -->
+    <div id="food-panel" class="menu-panel active">
+
+      <!-- Raw & Chilled -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Raw &amp; Chilled</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Fresh Oysters</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Traditional Accompaniments</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Shrimp Cocktail</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Wild Caught Shrimp, Housemade Cocktail, Fresh Horseradish</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Tuna Tartare</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Citrus, Calabrian Chili, Sesame, Taro Root</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Hamachi Crudo</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Pickled Apple, Jalape&ntilde;o Granita, Mint</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Siberian Caviar</span>
+              <span class="menu-item-price">145</span>
+            </div>
+            <div class="menu-item-desc">Cr&egrave;me Fra&icirc;che, Chives, Brioche Toast</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seafood Tower</span>
+              <span class="menu-item-price">150</span>
+            </div>
+            <div class="menu-item-desc">Oysters, Shrimp, Snow Crab Claws, Tuna Tartare, Lobster Salad</div>
+          </div>
+        </div>
       </div>
 
-      <div class="card fade-in">
-        <h3>Steaks & Chops</h3>
-        <p>Prime New York Strip, Dry-Aged Bone-In Ribeye, Japanese A5 Strip Loin, Snake River Farms Eye of Rib, Australian Lamb Chop, Porterhouse</p>
+      <!-- Appetizers -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Appetizers</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Crab Cake</span>
+              <span class="menu-item-price">24</span>
+            </div>
+            <div class="menu-item-desc">Lemon-Caper Remoulade</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Duck Meatballs</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <div class="menu-item-desc">Smoked Tomato, Caramelized Onion, Pecorino Tartufo</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Beef Croquettes</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Roasted Garlic Aioli, White Fris&eacute;e</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Roasted Bone Marrow</span>
+              <span class="menu-item-price">24</span>
+            </div>
+            <div class="menu-item-desc">Parsley &amp; Olive Salad, Lemon Vinaigrette, Grilled Sourdough</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Steak Tartare</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Truffle Aioli, Capers, Shallots, Parsley, Egg, House Potato Chips</div>
+          </div>
+        </div>
       </div>
 
-      <div class="card fade-in">
-        <h3>Appetizers</h3>
-        <p>Roasted Bone Marrow, Steak Tartare, Duck Meatballs, Poached King Crab</p>
+      <!-- Soups & Salads -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Soups &amp; Salads</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Violet Sweet Potato Soup</span>
+              <span class="menu-item-price">19</span>
+            </div>
+            <div class="menu-item-desc">Spiced Apple, Cardamom Cream, Brown Butter, Candied Pecans</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seafood Chowder</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Marble Potatoes, Bacon, Leeks, Crispy Sunchokes, Chives</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Beet &amp; Endive Salad</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Honeycrisp Apple, Goat Feta, Pistachio Crumble, Ginger Vinaigrette</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Caesar Salad</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <div class="menu-item-desc">Gem Lettuce, House Caesar Dressing, Garlic Crumbs, Aged Parmesan</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Wedge Salad</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <div class="menu-item-desc">Baby Iceberg Lettuce, Cured Egg, Bacon Crumble, Tomato, Blue Cheese</div>
+          </div>
+        </div>
       </div>
 
-      <div class="card fade-in">
-        <h3>Fish & Seafood</h3>
-        <p>Seared Diver Scallops, Braised Beef Short Rib</p>
+      <!-- Fish & Seafood -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Fish &amp; Seafood</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Faroe Island Salmon</span>
+              <span class="menu-item-price">50</span>
+            </div>
+            <div class="menu-item-desc">Truffled Potato Risotto, Fine Herbs</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seared Diver Scallops</span>
+              <span class="menu-item-price">40</span>
+            </div>
+            <div class="menu-item-desc">Cannellini Beans, Bacon, Lemon, Parsley</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seared Halibut</span>
+              <span class="menu-item-price">42</span>
+            </div>
+            <div class="menu-item-desc">Sauce Beurre Blanc, Melted Fennel</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Lobster Roll</span>
+              <span class="menu-item-price">50</span>
+            </div>
+            <div class="menu-item-desc">Truffle Aioli, Brioche, Gaufrette Potatoes</div>
+          </div>
+        </div>
       </div>
 
-      <div class="card fade-in">
-        <h3>Sides</h3>
-        <p>Robuchon potatoes, seasonal vegetables, house salad</p>
+      <!-- Specialties -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Specialties</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Long Island Duck Breast</span>
+              <span class="menu-item-price">48</span>
+            </div>
+            <div class="menu-item-desc">Sweet Onion, Madeira &ndash; Fig Jus</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Bone In Braised Beef Short Rib</span>
+              <span class="menu-item-price">55</span>
+            </div>
+            <div class="menu-item-desc">Mushroom Ragout, Robuchon Potatoes, Glazed Carrots</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Dry Aged Steak Burger</span>
+              <span class="menu-item-price">30</span>
+            </div>
+            <div class="menu-item-desc">Bacon Jam, Aged Cheddar, Tallow Fries</div>
+          </div>
+        </div>
       </div>
 
-      <div class="card fade-in">
-        <h3>Desserts</h3>
-        <p>Baked Alaska, Steakhouse Chocolate Cake, Ginger Cheesecake</p>
-      </div>
-    </section>
+      <!-- Steaks & Chops -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Steaks &amp; Chops</div>
 
+        <div class="menu-sub-header">Black Angus</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Prime New York Strip 14 OZ</span>
+              <span class="menu-item-price">85</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Prime Ribeye 18 OZ</span>
+              <span class="menu-item-price">110</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Filet Mignon 6 OZ</span>
+              <span class="menu-item-price">50</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Filet Mignon 8 OZ</span>
+              <span class="menu-item-price">65</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Filet Mignon 12 OZ</span>
+              <span class="menu-item-price">85</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Bone In Filet Mignon 14 OZ</span>
+              <span class="menu-item-price">100</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Prime Dry Aged Bone In New York Strip 24 OZ</span>
+              <span class="menu-item-price">165</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Prime Dry Aged Bone In Ribeye 28 OZ</span>
+              <span class="menu-item-price">195</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-sub-header">Wagyu Beef</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">American Wagyu Coulotte 10 OZ</span>
+              <span class="menu-item-price">85</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">American Snake River Farms Filet Mignon 8 OZ</span>
+              <span class="menu-item-price">125</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Japanese A5 Striploin Per OZ</span>
+              <span class="menu-item-price">30</span>
+            </div>
+            <div class="menu-item-desc">3 OZ Minimum</div>
+          </div>
+        </div>
+
+        <div class="menu-sub-header">Chops</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Australian Lamb Chops 12 OZ</span>
+              <span class="menu-item-price">50</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Berkshire Pork Chop 20 OZ</span>
+              <span class="menu-item-price">40</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Prime Dry Aged Beef Tomahawk 40 OZ</span>
+              <span class="menu-item-price">280</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sauces & Additions -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Sauces &amp; Additions</div>
+        <div class="sauce-grid">
+          <div class="sauce-item"><span>Black Truffle Butter</span><span>10</span></div>
+          <div class="sauce-item"><span>Blue Crab Oscar</span><span>20</span></div>
+          <div class="sauce-item"><span>Horseradish Cr&egrave;me Fra&icirc;che</span><span>10</span></div>
+          <div class="sauce-item"><span>Bordelaise Sauce</span><span>12</span></div>
+          <div class="sauce-item"><span>B&eacute;arnaise Sauce</span><span>12</span></div>
+          <div class="sauce-item"><span>Au Poivre Sauce</span><span>14</span></div>
+          <div class="sauce-item"><span>Smoked Shoyu Sauce</span><span>10</span></div>
+          <div class="sauce-item"><span>Bone Marrow Compound Butter</span><span>10</span></div>
+          <div class="sauce-item"><span>Grilled Shrimp</span><span>14</span></div>
+          <div class="sauce-item"><span>Seared Scallops</span><span>20</span></div>
+        </div>
+      </div>
+
+      <!-- Accompaniments -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Accompaniments</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Sweet Potato Pur&eacute;e</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <div class="menu-item-desc">Spiced Honey Butter, Hazelnuts, Sage</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Steakhouse Rolls</span>
+              <span class="menu-item-price">10</span>
+            </div>
+            <div class="menu-item-desc">Whipped Butter, Sea Salt</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Potato Pur&eacute;e</span>
+              <span class="menu-item-price">13</span>
+            </div>
+            <div class="menu-item-desc">European Butter, Sea Salt</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Mushroom Bread Pudding</span>
+              <span class="menu-item-price">16</span>
+            </div>
+            <div class="menu-item-desc">Mushroom Ragout, Sherry, Thyme</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Grilled Broccolini</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <div class="menu-item-desc">Pistachio Pesto, Burrata, Lemon</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">House Smoked Bacon</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Green Goddess, Crispy Onions</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Creamed Spinach</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <div class="menu-item-desc">Garlic &amp; Aged Parmesan</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Celery Root Pav&eacute;</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <div class="menu-item-desc">Aleppo Beurre Blanc</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Tallow Fries</span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <div class="menu-item-desc">Truffle Aioli, Sea Salt, Herbs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dessert -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Dessert</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Key Lime Baked Alaska</span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <div class="menu-item-desc">Toasted Meringue, Graham Cracker</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Tiramisu</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <div class="menu-item-desc">Mascarpone, Espresso, Chocolate Tuile</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Apple Bread Pudding</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <div class="menu-item-desc">Toffee Sauce, Cinnamon Whipped Cream</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Steakhouse Chocolate Cake</span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <div class="menu-item-desc">Videri Chocolate Ganache, Milk Chocolate Cream</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Hot Fudge Sundae</span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <div class="menu-item-desc">Salted Caramel &amp; Vanilla Ice Cream Swirl, Crunchy Caramel Popcorn</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end food-panel -->
+
+    <!-- ==================== DRINKS MENU ==================== -->
+    <div id="drinks-panel" class="menu-panel">
+
+      <!-- Cocktails -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Cocktails</div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">CB Old Fashioned</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Buffalo Trace Bourbon, Cane, House Bitters</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Pi&ntilde;a Plancha</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Altos Blanco Tequila, Montenegro, Habanero, Roasted Pineapple, Spiced Salt Rim</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Savory Martini</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Botanist Gin, Spanish Vermouth, Pepperoncini, Olive Oil</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Vesper</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Uncle Val's Gin, Chopin Vodka, Cap Corse Blanc, Umami</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Scotch Highball</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Bruichladdich Scottish Barley &amp; The Finest Soda</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seasonal Sour #3</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Planteray Rum, Pomegranate Hibiscus, Egg White</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Port of Spain</span>
+              <span class="menu-item-price">20</span>
+            </div>
+            <div class="menu-item-desc">Banhez Mezcal, Cacha&ccedil;a, Tiger Chai Orgeat, Angostura Bitters</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Vieux Carr&eacute;</span>
+              <span class="menu-item-price">22</span>
+            </div>
+            <div class="menu-item-desc">Michter's Single Barrel Rye, Cognac, Malmsey Madeira, Benedictine</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Spritz Normand <span style="font-size:11px; opacity:0.6;">(N/A)</span></span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <div class="menu-item-desc">N/A Riesling, Ginger, Lemon, Bordelet Apple Cider</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wines by the Glass -->
+      <div class="menu-section-wrap fade-in">
+        <div class="menu-section-title">Wines by the Glass</div>
+
+        <div class="menu-sub-header">Sparkling &middot; 6 OZ Glass</div>
+        <div class="menu-items single-col">
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Voirin-Jumel Champagne Grand Cru, LA V1</span>
+              <span class="wine-price">36</span>
+            </div>
+            <div class="wine-detail">Chardonnay &mdash; Champagne, FR NV</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Franck Besson Ros&eacute; Granit</span>
+              <span class="wine-price">19</span>
+            </div>
+            <div class="wine-detail">Gamay &mdash; Beaujolais, FR NV</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Passerine Blanquette De Limoux</span>
+              <span class="wine-price">16</span>
+            </div>
+            <div class="wine-detail">Mauzac / Chardonnay &mdash; Languedoc, FR NV</div>
+          </div>
+        </div>
+
+        <div class="menu-sub-header">White</div>
+        <div class="menu-items single-col">
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Chateau De Villeneuve Saumur, Les Cormiers</span>
+              <span class="wine-price">20</span>
+            </div>
+            <div class="wine-detail">Chenin Blanc &mdash; Loire Valley, FR 2022</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Von Winning Pfalz, II</span>
+              <span class="wine-price">18</span>
+            </div>
+            <div class="wine-detail">Sauvignon Blanc &mdash; Pfalz, DE 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Domaine Des Chasseignes Sancerre</span>
+              <span class="wine-price">30</span>
+            </div>
+            <div class="wine-detail">Sauvignon Blanc &mdash; Loire Valley, FR 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Henri Fuchs Alsace</span>
+              <span class="wine-price">19</span>
+            </div>
+            <div class="wine-detail">Pinot Gris &mdash; Alsace, FR 2022</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Patrick Sullivan</span>
+              <span class="wine-price">22</span>
+            </div>
+            <div class="wine-detail">Chardonnay &mdash; South East Australia 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Carl Loewen Mosel, Kabinett Herrenberg</span>
+              <span class="wine-price">23</span>
+            </div>
+            <div class="wine-detail">Riesling &mdash; Mosel, DE 2024</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Eleni Et Edouard Vocoret Chablis, Boucheran</span>
+              <span class="wine-price">44</span>
+            </div>
+            <div class="wine-detail">Chardonnay &mdash; Burgundy, FR 2022</div>
+          </div>
+        </div>
+
+        <div class="menu-sub-header">Pink &amp; Orange</div>
+        <div class="menu-items single-col">
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Propriet&agrave; Sperino Piemonte Rosato, Rosa Del Rosa</span>
+              <span class="wine-price">20</span>
+            </div>
+            <div class="wine-detail">Nebbiolo, Vespolina &mdash; Alto Piemonte, IT 2024</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Movia BRDA, Sivi</span>
+              <span class="wine-price">24</span>
+            </div>
+            <div class="wine-detail">Pinot Grigio &mdash; Goriska BRDA, SI 2021</div>
+          </div>
+        </div>
+
+        <div class="menu-sub-header">Red</div>
+        <div class="menu-items single-col">
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Purple Hands Willamette Valley, Lone Oak Ranch</span>
+              <span class="wine-price">24</span>
+            </div>
+            <div class="wine-detail">Pinot Noir &mdash; Willamette Valley, OR 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Guido Porro Barolo, Gianetto</span>
+              <span class="wine-price">44</span>
+            </div>
+            <div class="wine-detail">Nebbiolo &mdash; Piemonte, IT 2021</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Turley Juvenile</span>
+              <span class="wine-price">22</span>
+            </div>
+            <div class="wine-detail">Zinfandel &mdash; California 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Martin Woods Walla Walla Valley</span>
+              <span class="wine-price">34</span>
+            </div>
+            <div class="wine-detail">Cabernet Franc &mdash; Columbia Valley, OR 2022</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Chateau Respide-Medeville Graves</span>
+              <span class="wine-price">26</span>
+            </div>
+            <div class="wine-detail">Cabernet Sauvignon, Merlot &mdash; Bordeaux, FR 2021</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Muga Rioja Reserva, Selecci&oacute;n Especial</span>
+              <span class="wine-price">38</span>
+            </div>
+            <div class="wine-detail">Tempranillo Blend &mdash; La Rioja, ES 2020</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Domaine D'Aupilhac Languedoc, Lou Maset</span>
+              <span class="wine-price">18</span>
+            </div>
+            <div class="wine-detail">Grenache/Syrah/Carignan/Cinsault &mdash; Languedoc, FR 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Chappellet Napa Valley, Mountain Cuv&eacute;e</span>
+              <span class="wine-price">27</span>
+            </div>
+            <div class="wine-detail">Cabernet Sauvignon Blend &mdash; Napa County, CA 2023</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Freemark Abbey Napa Valley</span>
+              <span class="wine-price">46</span>
+            </div>
+            <div class="wine-detail">Cabernet Sauvignon &mdash; Napa Valley 2021</div>
+          </div>
+          <div class="wine-item">
+            <div class="wine-item-header">
+              <span class="wine-name">Snowden Brothers Vineyard</span>
+              <span class="wine-price">65</span>
+            </div>
+            <div class="wine-detail">Cabernet Sauvignon &mdash; Napa County, CA 2021</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end drinks-panel -->
+
+    <!-- CTA -->
     <section class="cta-section">
       <a href="https://exploretock.com/crawford-brothers-cary" class="cta-btn">Make a Reservation</a>
     </section>
   </main>
 
+  <!-- Sister Concepts -->
+  <div class="sister-concepts">
+    <p class="sister-concepts-label">Visit Our Sister Concepts</p>
+    <div class="sister-logos">
+      <a href="http://restaurantjolie.com/" target="_blank" rel="noopener"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/logo-jolie.gif" alt="Jolie"></a>
+      <a href="http://crawfordandsonrestaurant.com/" target="_blank" rel="noopener"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/logo-cns-e1717606846521.jpg" alt="Crawford and Son"></a>
+      <a href="https://www.instagram.com/barsousterre/" target="_blank" rel="noopener"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/bar-sous-terre.jpg" alt="Bar Sous Terre"></a>
+      <a href="https://brodeto.com/" target="_blank" rel="noopener"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/logo-brodeto.gif" alt="Brodeto"></a>
+    </div>
+  </div>
+
   <footer>
     <img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Crawford-Brothers-MONOGRAM-02.png" alt="CB" class="footer-logo">
     <p>Crawford Brothers Steakhouse &bull; 401 Fenton Gateway Dr., Cary, NC 27511</p>
-    <p>(919) 629-4029 &bull; Open Daily 5pm–10pm</p>
+    <p>(919) 629-4029 &bull; Open Daily 5pm&ndash;10pm</p>
     <p style="margin-top: 8px;"><a href="blog.html" style="color: var(--gold); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Stories from the Kitchen</a></p>
     <p>&copy; 2025 Crawford Brothers. All rights reserved.</p>
   </footer>
 
   <script>
+    // Tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      if (tab === 'food') {
+        document.querySelectorAll('.menu-tab')[0].classList.add('active');
+        document.getElementById('food-panel').classList.add('active');
+      } else {
+        document.querySelectorAll('.menu-tab')[1].classList.add('active');
+        document.getElementById('drinks-panel').classList.add('active');
+      }
+      // Re-observe fade-in elements in the newly visible panel
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+    }
+
+    // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
