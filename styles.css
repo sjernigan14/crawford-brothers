@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&family=Lexend+Exa:wght@300;400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Tiller';
+  src: url('https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Tiller-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,7 +27,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 300;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -56,7 +64,7 @@ nav {
   width: auto;
 }
 .nav-logo-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: var(--gold);
@@ -67,10 +75,11 @@ nav {
 nav a {
   color: var(--gold);
   text-decoration: none;
+  font-family: 'Tiller', sans-serif;
   font-size: 13px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   transition: opacity 0.3s;
 }
 nav a:hover { opacity: 0.7; }
@@ -136,7 +145,7 @@ nav a.active {
   z-index: 2;
 }
 .hero-content h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 48px;
   font-weight: 500;
   color: var(--white);
@@ -191,7 +200,7 @@ nav a.active {
   color: var(--text);
 }
 .section-label {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 13px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -200,7 +209,7 @@ nav a.active {
   font-weight: 600;
 }
 .text-section h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 34px;
   font-weight: 500;
   color: var(--white);
@@ -220,12 +229,21 @@ nav a.active {
   text-align: center;
 }
 .text-section.wide h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 26px;
   font-weight: 500;
   color: var(--gold);
   margin: 40px 0 16px;
   letter-spacing: 1px;
+}
+.text-section img, .text-section.wide img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+  margin: 30px 0;
+  border: 1px solid var(--divider);
 }
 
 /* ===== PHOTO SECTIONS ===== */
@@ -272,7 +290,7 @@ nav a.active {
   text-align: center;
 }
 .two-col .col .section-label {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -303,7 +321,7 @@ nav a.active {
   text-align: center;
 }
 .cta-section h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 30px;
   font-weight: 500;
   color: var(--white);
@@ -324,7 +342,7 @@ nav a.active {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   transition: background 0.3s, color 0.3s;
 }
@@ -365,7 +383,7 @@ nav a.active {
   opacity: 0.35;
 }
 .hours-bar .cb-logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 40px;
   color: var(--gold);
   opacity: 0.35;
@@ -389,7 +407,7 @@ nav a.active {
 }
 .card:hover { border-color: var(--gold-dark); }
 .card h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: var(--white);
@@ -411,7 +429,7 @@ nav a.active {
   gap: 50px;
 }
 .info-block .info-label {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -449,7 +467,7 @@ nav a.active {
 }
 .press-item:hover { border-color: var(--gold-dark); }
 .press-item .pub-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Tiller', sans-serif;
   font-size: 18px;
   color: var(--white);
   margin-bottom: 8px;
