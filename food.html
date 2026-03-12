@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinner Menu | Crawford Brothers Steakhouse — Cary, NC</title>
+  <meta name="description" content="Explore the Crawford Brothers dinner menu — prime dry-aged steaks, fresh seafood tower, Siberian caviar, and bone marrow. Fenton, Cary NC.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Crawford Brothers Dinner Menu",
+    "url": "https://crawfordbrotherssteakhouse.com/food/",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Raw & Chilled",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Seafood Tower",
+            "description": "Oysters, shrimp, snow crab claws, tuna tartare, king crab salad"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Siberian Caviar",
+            "description": "Served with traditional accompaniments"
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Steaks & Chops",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Prime New York Strip",
+            "description": "Dry-aged in-house"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Dry-Aged Bone-In Ribeye",
+            "description": "Dry-aged in-house"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Japanese A5 Strip Loin",
+            "description": "Japanese Wagyu"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/Crawford-Brothers-LOGO-LOCK-UP-FULL-02.png" alt="Crawford Brothers Steakhouse" class="nav-logo"></a>
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="food.html" class="active">Menus</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="private-events.html">Private Events</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="dry-aging.html">Dry-Aging</a>
+      <a href="press.html">Press</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://exploretock.com/crawford-brothers-cary" class="nav-btn">Reservations</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AGqaLiHvh9CDpYbIJEBNJ5M/Fish.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Dinner Menu">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Dinner Menu — Prime Steaks & Seafood</h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="card-grid">
+      <div class="card fade-in">
+        <h3>Raw & Chilled</h3>
+        <p>Seafood Tower, Siberian Caviar, Oysters, Shrimp Cocktail</p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Steaks & Chops</h3>
+        <p>Prime New York Strip, Dry-Aged Bone-In Ribeye, Japanese A5 Strip Loin, Snake River Farms Eye of Rib, Australian Lamb Chop, Porterhouse</p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Appetizers</h3>
+        <p>Roasted Bone Marrow, Steak Tartare, Duck Meatballs, Poached King Crab</p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Fish & Seafood</h3>
+        <p>Seared Diver Scallops, Braised Beef Short Rib</p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Sides</h3>
+        <p>Robuchon potatoes, seasonal vegetables, house salad</p>
+      </div>
+
+      <div class="card fade-in">
+        <h3>Desserts</h3>
+        <p>Baked Alaska, Steakhouse Chocolate Cake, Ginger Cheesecake</p>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <a href="https://exploretock.com/crawford-brothers-cary" class="cta-btn">Make a Reservation</a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Crawford-Brothers-MONOGRAM-02.png" alt="CB" class="footer-logo">
+    <p>Crawford Brothers Steakhouse &bull; 401 Fenton Gateway Dr., Cary, NC 27511</p>
+    <p>(919) 629-4029 &bull; Open Daily 5pm–10pm</p>
+    <p>&copy; 2025 Crawford Brothers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

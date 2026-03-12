@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocktails & Wine | Crawford Brothers — Cary, NC</title>
+  <meta name="description" content="Craft cocktails and wine at Crawford Brothers Steakhouse. Signature drinks and curated wine selections in Cary, NC.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/Crawford-Brothers-LOGO-LOCK-UP-FULL-02.png" alt="Crawford Brothers Steakhouse" class="nav-logo"></a>
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="food.html">Menus</a>
+      <a href="drinks.html" class="active">Drinks</a>
+      <a href="private-events.html">Private Events</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="dry-aging.html">Dry-Aging</a>
+      <a href="press.html">Press</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://exploretock.com/crawford-brothers-cary" class="nav-btn">Reservations</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AM7JO-_7tgYgDpLvPmNmpMY/PortOfSpain.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Cocktails & Wine">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Cocktails & Wine</h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="two-col fade-in">
+      <div class="col">
+        <span class="section-label">Cocktails</span>
+        <p>Our cocktail program features original craft cocktails designed to complement our prime steaks and seafood. Experience classics reimagined for Crawford Brothers, including our signature Crawford Old Fashioned and Tableside Martini Service. Our bar team crafts each drink with precision and care, using premium spirits and fresh ingredients. Whether you prefer a timeless classic or one of our house creations, our cocktails are an essential part of the Crawford Brothers experience.</p>
+        <p>Ask about Tableside Old Fashioned preparation at your table for an interactive experience.</p>
+      </div>
+      <div class="col">
+        <span class="section-label">Wine</span>
+        <p>Our wine program is carefully curated to pair beautifully with our prime beef and fresh seafood. We work with our sommelier to build a collection that celebrates both classic regions and exciting discoveries. In the Gangster Room, we offer sommelier-led pairings designed specifically for our multi-course experiences.</p>
+        <p>Our wine selections range from bold reds that stand up to dry-aged prime cuts, to crisp whites that highlight our fresh seafood. We welcome wine enthusiasts and newcomers alike, and our team is always happy to offer recommendations.</p>
+      </div>
+    </section>
+
+    <section class="photo-section single fade-in">
+      <div class="photo-block">
+        <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/ABKkpb_8xcQry6h8toejHGQ/Kopke.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Port wine selection">
+      </div>
+    </section>
+
+    <section class="text-section fade-in">
+      <h2>After-Dinner</h2>
+      <p>Complete your evening with our selection of amaro, fine spirits, and other after-dinner selections. Our bar manager has curated an exceptional collection of digestifs and fortified wines to end your dinner perfectly.</p>
+    </section>
+  </main>
+
+  <footer>
+    <img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Crawford-Brothers-MONOGRAM-02.png" alt="CB" class="footer-logo">
+    <p>Crawford Brothers Steakhouse &bull; 401 Fenton Gateway Dr., Cary, NC 27511</p>
+    <p>(919) 629-4029 &bull; Open Daily 5pm–10pm</p>
+    <p>&copy; 2025 Crawford Brothers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

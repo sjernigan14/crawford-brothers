@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press & Media | Crawford Brothers Steakhouse — Cary</title>
+  <meta name="description" content="Crawford Brothers has been featured in Wine Enthusiast, Eater, and Raleigh Magazine. See what the press says about Cary's premier steakhouse.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html"><img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2024/02/Crawford-Brothers-LOGO-LOCK-UP-FULL-02.png" alt="Crawford Brothers Steakhouse" class="nav-logo"></a>
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="food.html">Menus</a>
+      <a href="drinks.html">Drinks</a>
+      <a href="private-events.html">Private Events</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="dry-aging.html">Dry-Aging</a>
+      <a href="press.html" class="active">Press</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://exploretock.com/crawford-brothers-cary" class="nav-btn">Reservations</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/ALCRf8dybrTUIFTnvV_imo4/CB.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Crawford Brothers in the Press">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Crawford Brothers in the Press</h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="text-section fade-in">
+      <p>Since opening at Fenton in Cary, NC in December 2024, Crawford Brothers has earned recognition from the most respected names in food, drink, and hospitality. Chef Scott Crawford — a five-time James Beard semifinalist for Best Chef: Southeast and 2025 nominee for Outstanding Restaurateur — has built a steakhouse that critics and publications across the region continue to celebrate.</p>
+    </section>
+
+    <section class="press-grid fade-in">
+      <div class="press-item">
+        <div class="pub-name">Raleigh Magazine</div>
+        <div class="pub-desc">Best Restaurants 2025</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Eater</div>
+        <div class="pub-desc">Best Steakhouses NC Triangle; Best Burgers Raleigh-Durham</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Wine Enthusiast</div>
+        <div class="pub-desc">Cocktail Features</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Pastry Arts Magazine</div>
+        <div class="pub-desc">Full Issue Feature</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Midtown Magazine</div>
+        <div class="pub-desc">Chef Crawford Profile</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Cary Magazine</div>
+        <div class="pub-desc">Restaurant Profile</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">The Local Palate</div>
+        <div class="pub-desc">Restaurant Profile</div>
+      </div>
+
+      <div class="press-item">
+        <div class="pub-name">Walter Magazine</div>
+        <div class="pub-desc">Destination Fenton</div>
+      </div>
+    </section>
+
+    <section class="text-section fade-in">
+      <p>For press inquiries, please contact jennifer@jnkpublicrelations.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <img src="https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Crawford-Brothers-MONOGRAM-02.png" alt="CB" class="footer-logo">
+    <p>Crawford Brothers Steakhouse &bull; 401 Fenton Gateway Dr., Cary, NC 27511</p>
+    <p>(919) 629-4029 &bull; Open Daily 5pm–10pm</p>
+    <p>&copy; 2025 Crawford Brothers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
