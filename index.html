@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crawford Brothers Steakhouse — Cary, NC</title>
+<meta name="description" content="Prime steakhouse in Fenton, Cary NC from James Beard-recognized Chef Scott Crawford. Dry-aged steaks, raw bar, craft cocktails. Open daily 5–10pm.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #1a1614;
+    --gold: #c4995c;
+    --gold-light: #d4ad70;
+    --text: #b8a894;
+    --text-light: #9a8c7e;
+    --white: #e8e0d8;
+    --divider: #3a322c;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--divider);
+    position: sticky;
+    top: 0;
+    background: rgba(26,22,20,0.95);
+    backdrop-filter: blur(12px);
+    z-index: 50;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  nav a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: opacity 0.3s;
+  }
+  nav a:hover { opacity: 0.7; }
+  .nav-btn {
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .nav-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  .hero {
+    width: 100%;
+    height: 85vh;
+    min-height: 500px;
+    max-height: 750px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,22,20,0.15) 0%,
+      rgba(26,22,20,0.0) 40%,
+      rgba(26,22,20,0.5) 80%,
+      rgba(26,22,20,1) 100%
+    );
+  }
+
+  .text-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 70px 40px;
+    text-align: center;
+  }
+  .text-section p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  .text-section .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .text-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+  }
+
+  .photo-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+  }
+  .photo-section.single { display: block; }
+  .photo-section.full-bleed { max-width: 100%; }
+  .photo-block {
+    flex: 1;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 6s ease;
+  }
+  .photo-block:hover img { transform: scale(1.03); }
+  .photo-block.tall { height: 500px; }
+
+  .photo-block .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(26,22,20,0.0) 60%, rgba(26,22,20,0.3) 100%);
+    pointer-events: none;
+  }
+
+  .two-col {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 70px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    text-align: center;
+  }
+  .two-col .col .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .two-col .col p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text);
+  }
+
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+    opacity: 0.4;
+  }
+
+  .cta-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+  .cta-section p {
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 28px;
+    line-height: 1.8;
+  }
+  .cta-btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 14px 40px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    transition: background 0.3s, color 0.3s;
+  }
+  .cta-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  .hours-bar {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+  }
+  .hours-bar .col { text-align: center; }
+  .hours-bar .label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .hours-bar .value {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .hours-bar .cb-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold);
+    opacity: 0.35;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    padding: 50px 40px;
+    font-size: 13px;
+    color: var(--text-light);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+  }
+
+  .photo-block, .hero {
+    background: linear-gradient(135deg, #2a2220, #1a1614);
+  }
+
+  @media (max-width: 768px) {
+    nav { flex-wrap: wrap; gap: 16px; padding: 20px; }
+    .nav-logo { width: 100%; text-align: center; }
+    .hero { height: 60vh; min-height: 350px; }
+    .text-section { padding: 50px 24px; }
+    .text-section h2 { font-size: 28px; }
+    .two-col { grid-template-columns: 1fr; gap: 40px; padding: 50px 24px; }
+    .photo-section { flex-direction: column; }
+    .photo-block { height: 280px; }
+    .photo-block.tall { height: 320px; }
+    .hours-bar { flex-direction: column; gap: 28px; padding: 40px 24px; }
+    .cta-section { padding: 50px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Crawford Brothers</span>
+  <a href="#">Menus</a>
+  <a href="#">Private Events</a>
+  <a href="#">Press</a>
+  <a href="#">Contact</a>
+  <a href="#" class="nav-btn">Reservations</a>
+</nav>
+
+<!-- 1. HERO -->
+<div class="hero">
+  <img src="https://uc041978c8205af54e5d6c282114.previews.dropboxusercontent.com/p/thumb/AC_7vSVMdKwuF26zZOAIZ09zbvDqdExpKIbs5GNOebkVCP5Rvz0q0G7E1UG0c82GRlSvYc7r6WqfWsXmQ5hE_6K78HRSlKcRyVdqHw7Jz55s_3LKSFeDphOejWy1JqKvT2CLnTP4zgzB3vfMqnqKiB_wA_y3R1b6UPVQCL--v9V6gjYKLZXrpP_50AQ5R4LeyimquopR3FyTm4om6KxAr-N8ovhy2en1_ZlDL-t7kuwAWtcti6vXskwQOeTyoPPHP4jGuE5vuHqzdjd3D44fUyb2085b3wSi6rDNXRenMTvARUHdOAqubDG2y4WtyNfK7IAh0P9tJoTCe8F3JFI_OQo660FhcrbllT770WO9-8lICOkDjH2WgmgkvdyE2UJBcUEQ_tjxgQsRkarvn608TQGDdBT61LMMU3G2m87hzOt3Aw/p.jpeg" alt="Dry-aged prime steak at Crawford Brothers Steakhouse">
+  <div class="hero-overlay"></div>
+</div>
+
+<!-- 2. INTRO -->
+<div class="text-section fade-in">
+  <div class="section-label">Fenton &bull; Cary, NC</div>
+  <p>Crawford Brothers is the vision of James Beard-recognized Chef Scott Crawford — a prime steakhouse built around one principle: the finest ingredients, prepared with precision, and served in a setting that feels both timeless and alive. Every steak on our menu is dry-aged in-house in our dedicated aging room.</p>
+</div>
+
+<!-- 3. PHOTO PAIR: seafood + dry aging room -->
+<div class="photo-section fade-in">
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AGqaLiHvh9CDpYbIJEBNJ5M/Fish.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Fresh seafood preparation at Crawford Brothers">
+    <div class="overlay-gradient"></div>
+  </div>
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/ACVUsQbAcDqFoq5sdPOsGes/MeatLocker.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Dry aging room at Crawford Brothers Steakhouse">
+    <div class="overlay-gradient"></div>
+  </div>
+</div>
+
+<!-- 4. THE STEAKS -->
+<div class="text-section fade-in">
+  <div class="section-label">Dry-Aged In House</div>
+  <h2>The Steaks</h2>
+  <p>Prime cuts are aged in our dedicated dry aging room, developing the deep, concentrated flavor and buttery tenderness that only time and craft can produce. The Prime New York Strip, Dry-Aged Bone-In Ribeye, Japanese A5 Strip Loin, and Snake River Farms Eye of the Rib. Every cut served with house-made sauces.</p>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- 5. TWO-COLUMN: Raw Bar + Cocktails -->
+<div class="two-col fade-in">
+  <div class="col">
+    <div class="section-label">Raw Bar &amp; Seafood</div>
+    <p>Our Seafood Tower — oysters, shrimp, snow crab claws, tuna tartare, and king crab salad — is a shareable showpiece. Siberian caviar by the ounce. Seared Diver Scallops. Poached King Crab with Caviar Beurre Blanc. The menu rewards guests who explore beyond the steak section.</p>
+  </div>
+  <div class="col">
+    <div class="section-label">Cocktails &amp; Wine</div>
+    <p>Our cocktail program features original craft cocktails and a signature Crawford Old Fashioned. The wine list is curated for pairing with prime beef and fresh seafood. After dinner, a rotating seasonal list of Amaro and fine after-dinner selections completes the evening.</p>
+  </div>
+</div>
+
+<!-- 6. PHOTO PAIR: cocktail + wine -->
+<div class="photo-section fade-in">
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AM7JO-_7tgYgDpLvPmNmpMY/PortOfSpain.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Craft cocktail at Crawford Brothers bar">
+    <div class="overlay-gradient"></div>
+  </div>
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/ABKkpb_8xcQry6h8toejHGQ/Kopke.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Wine selection at Crawford Brothers">
+    <div class="overlay-gradient"></div>
+  </div>
+</div>
+
+<!-- 7. SINGLE WIDE: interior -->
+<div class="photo-section single fade-in">
+  <div class="photo-block tall">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AD68ogAkWiClFKxYoq7pMvI/12-24-2.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Crawford Brothers Steakhouse dining room interior">
+    <div class="overlay-gradient"></div>
+  </div>
+</div>
+
+<!-- 8. PRIVATE DINING CTA -->
+<div class="cta-section fade-in">
+  <div class="gold-line" style="margin-bottom:36px"></div>
+  <h2>Private Dining</h2>
+  <p>We offer three distinct experiences. The Private Dining Room for up to 24 guests. The Gangster Room — an intimate 6-person table behind the glass of our dry aging room with a Butcher’s Feast for the Table. Full restaurant buyouts for up to 70 guests.</p>
+  <a href="#" class="cta-btn">Inquire About Events</a>
+</div>
+
+<!-- 9. DESSERT PHOTO -->
+<div class="photo-section single fade-in">
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/AJAEO60-SOm1s4kDbMl4FXA/BakedAlaska.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Baked Alaska dessert at Crawford Brothers Steakhouse">
+    <div class="overlay-gradient"></div>
+  </div>
+</div>
+
+<!-- 10. DESSERT TEXT -->
+<div class="text-section fade-in">
+  <div class="section-label">To Finish</div>
+  <p>Our dessert program is led by the Baked Alaska — lemon, toasted meringue, and white chocolate snow. The Steakhouse Chocolate Cake with Videri ganache and the Ginger Cheesecake round out every evening at Crawford Brothers.</p>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- 11. HOURS BAR -->
+<div class="hours-bar fade-in">
+  <div class="col">
+    <div class="label">Menus</div>
+    <div class="value">Dinner<br>Drinks</div>
+  </div>
+  <div class="cb-logo">CB</div>
+  <div class="col">
+    <div class="label">Hours</div>
+    <div class="value">Open Daily<br>5pm to 10pm</div>
+  </div>
+</div>
+
+<!-- 12. EXTERIOR PHOTO -->
+<div class="photo-section single fade-in">
+  <div class="photo-block">
+    <img src="https://www.dropbox.com/scl/fo/3kwhehzj6qc5xs0nrcdee/ALCRf8dybrTUIFTnvV_imo4/CB.jpg?rlkey=smb2wq8hvxuh5blrw5kbk8u3k&e=3&st=2s65rhd&raw=1" alt="Crawford Brothers Steakhouse exterior at Fenton in Cary NC">
+    <div class="overlay-gradient"></div>
+  </div>
+</div>
+
+<!-- 13. LOCATION -->
+<div class="text-section fade-in" style="padding: 50px 40px;">
+  <p style="font-size:15px; opacity:0.85;">401 Fenton Gateway Dr., Cary, NC 27511. Part of Crawford Hospitality — Crawford &amp; Son, Jolie, Brodeto, Crawford’s Genuine, and Sous Terre. Reservations recommended.</p>
+</div>
+
+<footer>
+  Crawford Brothers Steakhouse &bull; Fenton, Cary NC &bull; (919) 629-4029
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
