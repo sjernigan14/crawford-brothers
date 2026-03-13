@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap');
 
-/* Brand font: Tiller (heading) — currently loading Medium weight from WP host */
+/* Brand font: Tiller (heading) — self-hosted for GitHub Pages (CORS blocks cross-origin font loading) */
 /* TODO: Replace with Tiller Demi weight when Craig Evans provides the file */
+/* NOTE: Tiller-Medium.otf must be in the same directory as this CSS file in the GitHub repo */
 @font-face {
   font-family: 'Tiller';
-  src: url('https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Tiller-Medium.otf') format('opentype');
-  font-weight: 500;
+  src: url('Tiller-Medium.otf') format('opentype');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -80,7 +81,7 @@ nav {
   z-index: 50;
 }
 .nav-logo {
-  height: 50px;
+  height: 80px;
   width: auto;
 }
 .nav-logo-text {
@@ -529,7 +530,7 @@ footer {
   border-top: 1px solid var(--divider);
 }
 .footer-logo {
-  height: 44px;
+  height: 80px;
   width: auto;
   margin-bottom: 20px;
 }
@@ -574,7 +575,7 @@ footer a {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   nav { flex-wrap: wrap; gap: 0; padding: 16px 20px; justify-content: space-between; }
-  .nav-logo { height: 36px; }
+  .nav-logo { height: 56px; }
   .nav-toggle { display: block; }
   .nav-links {
     display: none;
