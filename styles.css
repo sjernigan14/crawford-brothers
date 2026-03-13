@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&family=Lexend+Exa:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap');
 
+/* Brand font: Tiller (heading) — currently loading Medium weight from WP host */
+/* TODO: Replace with Tiller Demi weight when Craig Evans provides the file */
 @font-face {
   font-family: 'Tiller';
   src: url('https://crawfordbrotherssteakhouse.com/wp/wp-content/uploads/2025/01/Tiller-Medium.otf') format('opentype');
@@ -8,18 +10,36 @@
   font-display: swap;
 }
 
+/* Brand font: Sweet Sans Pro (body + sub-headlines) */
+/* TODO: Add @font-face rules when Craig Evans provides .woff2 files */
+/* @font-face {
+  font-family: 'Sweet Sans Pro';
+  src: url('/fonts/SweetSansPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sweet Sans Pro';
+  src: url('/fonts/SweetSansPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+} */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #1a1614;
-  --bg-alt: #211d1a;
-  --gold: #c4995c;
-  --gold-light: #d4ad70;
-  --gold-dark: #a07a42;
-  --text: #b8a894;
+  --bg: #100906;
+  --bg-alt: #1a1410;
+  --gold: #BB8E5A;
+  --gold-light: #d0a46e;
+  --gold-dark: #9a7545;
+  --text: #c2b5a6;
   --text-light: #9a8c7e;
-  --white: #e8e0d8;
-  --divider: #3a322c;
+  --white: #FAF4F1;
+  --cream: #FAF4F1;
+  --divider: #302820;
 }
 
 html { scroll-behavior: smooth; }
@@ -27,7 +47,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Sweet Sans Pro', 'Lexend Deca', sans-serif;
   font-weight: 300;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -55,7 +75,7 @@ nav {
   border-bottom: 1px solid var(--divider);
   position: sticky;
   top: 0;
-  background: rgba(26,22,20,0.95);
+  background: rgba(16,9,6,0.95);
   backdrop-filter: blur(12px);
   z-index: 50;
 }
@@ -342,7 +362,7 @@ nav a.active {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Sweet Sans Pro', 'Lexend Deca', sans-serif;
   font-weight: 400;
   transition: background 0.3s, color 0.3s;
 }
@@ -541,6 +561,41 @@ footer a {
   fill: currentColor;
 }
 
+/* ===== SISTER CONCEPTS ===== */
+.sister-concepts {
+  text-align: center;
+  padding: 40px 40px 10px;
+  border-top: 1px solid var(--divider);
+}
+.sister-concepts h4 {
+  font-family: 'Tiller', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0.7;
+}
+.sister-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.sister-logos a {
+  display: inline-block;
+  opacity: 0.65;
+  transition: opacity 0.3s;
+}
+.sister-logos a:hover { opacity: 1; }
+.sister-logos img {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(0.75);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   nav { flex-wrap: wrap; gap: 0; padding: 16px 20px; justify-content: space-between; }
@@ -577,6 +632,9 @@ footer a {
   .info-grid { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
   .press-grid { grid-template-columns: 1fr 1fr; padding: 24px; gap: 16px; }
   .map-wrapper { padding: 0 24px 24px; }
+  .sister-concepts { padding: 30px 24px 10px; }
+  .sister-logos { gap: 24px; }
+  .sister-logos img { height: 36px; }
 }
 
 @media (max-width: 480px) {
