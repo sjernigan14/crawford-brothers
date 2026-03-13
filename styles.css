@@ -167,16 +167,18 @@ nav a.active {
 .hero-content h1 {
   font-family: 'Tiller', sans-serif;
   font-size: 48px;
-  font-weight: 500;
-  color: var(--white);
-  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
   margin-bottom: 12px;
 }
 .hero-content .hero-sub {
   font-size: 14px;
-  letter-spacing: 4px;
+  letter-spacing: 0.175em;
   text-transform: uppercase;
   color: var(--gold);
+  font-weight: 500;
 }
 
 /* ===== PAGE HERO (shorter, for interior pages) ===== */
@@ -222,7 +224,7 @@ nav a.active {
 .section-label {
   font-family: 'Tiller', sans-serif;
   font-size: 13px;
-  letter-spacing: 4px;
+  letter-spacing: 0.175em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 20px;
@@ -231,10 +233,11 @@ nav a.active {
 .text-section h2 {
   font-family: 'Tiller', sans-serif;
   font-size: 34px;
-  font-weight: 500;
-  color: var(--white);
+  font-weight: 600;
+  color: var(--gold);
   margin-bottom: 22px;
-  letter-spacing: 1px;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
 }
 
 /* Wide text section for content-heavy pages */
@@ -251,10 +254,11 @@ nav a.active {
 .text-section.wide h3 {
   font-family: 'Tiller', sans-serif;
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gold);
   margin: 40px 0 16px;
-  letter-spacing: 1px;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
 }
 .text-section img, .text-section.wide img {
   width: 100%;
@@ -343,9 +347,11 @@ nav a.active {
 .cta-section h2 {
   font-family: 'Tiller', sans-serif;
   font-size: 30px;
-  font-weight: 500;
-  color: var(--white);
+  font-weight: 600;
+  color: var(--gold);
   margin-bottom: 18px;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
 }
 .cta-section p {
   font-size: 16px;
@@ -429,9 +435,11 @@ nav a.active {
 .card h3 {
   font-family: 'Tiller', sans-serif;
   font-size: 24px;
-  font-weight: 500;
-  color: var(--white);
+  font-weight: 600;
+  color: var(--gold);
   margin-bottom: 12px;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
 }
 .card p {
   font-size: 15px;
@@ -489,9 +497,11 @@ nav a.active {
 .press-item .pub-name {
   font-family: 'Tiller', sans-serif;
   font-size: 18px;
-  color: var(--white);
+  color: var(--gold);
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
 }
 .press-item .pub-desc {
   font-size: 13px;
@@ -561,41 +571,6 @@ footer a {
   fill: currentColor;
 }
 
-/* ===== SISTER CONCEPTS ===== */
-.sister-concepts {
-  text-align: center;
-  padding: 40px 40px 10px;
-  border-top: 1px solid var(--divider);
-}
-.sister-concepts h4 {
-  font-family: 'Tiller', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 24px;
-  opacity: 0.7;
-}
-.sister-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.sister-logos a {
-  display: inline-block;
-  opacity: 0.65;
-  transition: opacity 0.3s;
-}
-.sister-logos a:hover { opacity: 1; }
-.sister-logos img {
-  height: 48px;
-  width: auto;
-  filter: brightness(0) invert(0.75);
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   nav { flex-wrap: wrap; gap: 0; padding: 16px 20px; justify-content: space-between; }
@@ -632,9 +607,6 @@ footer a {
   .info-grid { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
   .press-grid { grid-template-columns: 1fr 1fr; padding: 24px; gap: 16px; }
   .map-wrapper { padding: 0 24px 24px; }
-  .sister-concepts { padding: 30px 24px 10px; }
-  .sister-logos { gap: 24px; }
-  .sister-logos img { height: 36px; }
 }
 
 @media (max-width: 480px) {
